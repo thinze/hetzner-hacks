@@ -47,11 +47,35 @@
         var css = [];
 
         // cfg CSS
-        css.push('.btn { border: 0; padding: 5px 10px; border-radius: 4px; } ');
-        css.push('.btn:hover { cursor: pointer; }');
-        css.push('#btn-go2top { position: fixed; left: 350px; bottom: 50vh; font-size: 16px; background: lightgreen; padding: 10px; }');
+        const hetzner_red = '#d50c2d';
+        // Texte
+        css.push("#content h3 { font-size: 1rem; margin-top: 2rem; padding: 0 12px; font-weight: 600;} ");
+        css.push("#content .row label { font-weight: 500; margin-right: 2em; } ");
+        // custom helper buttons
+        css.push(".btn { border: 0; padding: 5px 10px; border-radius: 4px; } ");
+        css.push(".btn:hover { cursor: pointer; } ");
+        css.push("#btn-go2top { position: fixed; left: 10px; bottom: 50vh; font-size: 14px; background: lightgreen; padding: 5px; } ");
+        // Account Suchfeld
+        css.push("#domainlistsearch { padding: 5px !important; } ");
+        css.push("#domainlistsearch .col.text-end button { font-size: 12px; } ");
+        css.push("#domainlistsearch .col input, #domainlistsearch .col label, #domainlistsearch .col select { font-size: 14px; padding: 2px 6px; } ");
+        css.push("#domainlistsearch .col #resetSearch { padding: 0; top: 2px; } ");
+        // Account listing
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 { outline: 1px solid #fff; margin: 1px 0; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button { background: #hetzner_red#; color: #fff; padding: 0; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button .category-icon { align-self: baseline; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button i.bi { color: #fff; font-size: 24px; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 + .accordion-collapse.show { padding: 8px 0 5px; } ");
+        css.push("#product-list h2.accordion-header span.count .badge { background: #fff !important; color: #000 !important; }  ");
+        css.push("#content form[name='domain_listing'] #product-list .list-group a .row { margin: 0; padding: 2px 0 0; font-size: 14px; } ");
+        css.push("#content form[name='domain_listing'] #product-list .list-group a .row:hover { background: #eee; } ");
+        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row div.searchable h4.product-name { border-left: 2px solid #fff; } ");
+        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row:hover div.searchable h4.product-name { border-color: #eee; } ");
+        css.push("#content form[name='domain_listing'] #product-list a#product-active.list-group-item div.row div.searchable h4.product-name { border-color: #hetzner_red#; } ");
+        css.push("#content form[name='domain_listing'] #product-list .list-group a .bi.status { font-size: 10px; position: relative; top: -4px; left: 5px; } ");
+        // 
 
-        css = css.join('');
+        css = css.join('').replaceAll('#hetzner_red#', hetzner_red);
         return css;
     }
 
