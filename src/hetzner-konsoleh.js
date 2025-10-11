@@ -9,7 +9,7 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     console.log('konsoleH hacks started ...');
@@ -35,7 +35,7 @@
         console.log('<tellent-app-shell> existiert bereits');
         modifyShadowRoot('tellent-app-shell');
     } else {
-        waitForDomElement('tellent-app-shell', function(el) {
+        waitForDomElement('tellent-app-shell', function (el) {
             console.log('<tellent-app-shell> wurde nachträglich gefunden:');
             modifyShadowRoot('tellent-app-shell');
         });
@@ -48,6 +48,7 @@
 
         // cfg CSS
         const hetzner_red = '#d50c2d';
+        const color_success = '#37b730';
         // Texte
         css.push("#content h3 { font-size: 1rem; margin-top: 2rem; padding: 0 12px; font-weight: 600;} ");
         css.push("#content .row label { font-weight: 500; margin-right: 2em; } ");
@@ -55,6 +56,13 @@
         css.push(".btn { border: 0; padding: 5px 10px; border-radius: 4px; } ");
         css.push(".btn:hover { cursor: pointer; } ");
         css.push("#btn-go2top { position: fixed; left: 10px; bottom: 50vh; font-size: 14px; background: lightgreen; padding: 5px; } ");
+        // Sidebar
+        css.push("#sidemenu h3.accordion-header button:hover { background: #e9e9e9 !important; }");
+        css.push("#sidemenu h3.accordion-header .accordion-button:not(.collapsed) { background: #e9e9e9 !important; }");
+        css.push("#sidemenu dl dd { margin: 0; }");
+        css.push("#sidemenu dl dd + dt { margin-top: 1em; }");
+        css.push("#sidemenu dl dd a { display: inline-block; width: 100%; padding: 2px; }");
+        css.push("#sidemenu dl dd a:hover { background: #eaeaea; }");
         // Account Suchfeld
         css.push("#domainlistsearch { padding: 5px !important; } ");
         css.push("#domainlistsearch .col.text-end button { font-size: 12px; } ");
@@ -73,9 +81,19 @@
         css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row:hover div.searchable h4.product-name { border-color: #eee; } ");
         css.push("#content form[name='domain_listing'] #product-list a#product-active.list-group-item div.row div.searchable h4.product-name { border-color: #hetzner_red#; } ");
         css.push("#content form[name='domain_listing'] #product-list .list-group a .bi.status { font-size: 10px; position: relative; top: -4px; left: 5px; } ");
-        // 
+        // copy2clipboard
+        css.push("#content button.clickToCopy { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
+        css.push("#content button.clickToCopy .bi:hover { color: #hetzner_red#; } ");
+        css.push("#content button.clickToCopy .bi.bi-clipboard-check { color: #color_success#; } ");
+        css.push("#content button.clickToCopy_ftppass { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
+        css.push("#content button.clickToCopy_ftppass .bi:hover { color: #hetzner_red#; } ");
+        css.push("#content button.clickToCopy_ftppass .bi.bi-clipboard-check { color: #color_success#; } ");
+        // Content-Boxen
+        css.push("#content div.contentpart { padding: 10px 15px; }");
 
-        css = css.join('').replaceAll('#hetzner_red#', hetzner_red);
+        css = css.join('');
+        css = css.replaceAll('#hetzner_red#', hetzner_red);
+        css = css.replaceAll('#color_success#', color_success);
         return css;
     }
 
@@ -110,14 +128,44 @@
         btn.classList.add('btn');
         btn.innerText = 'top';
         document.body.appendChild(btn);
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             window.scrollToTop();
         });
+    }
+
+    function enableBtnCopy2Clipboard() {
+        if (location.pathname.startsWith('/logindata.php')) {
+            var btns = document.querySelectorAll('button.clickToCopy, button.clickToCopy_ftppass');
+            if (btns.length) {
+                btns.forEach(btn => {
+                    var icon = document.createElement('i');
+                    icon.classList.add('bi', 'bi-clipboard');
+                    btn.appendChild(icon);
+                    btn.addEventListener('click', function () {
+                        var field = btn.closest('.row').querySelector('label + div input');
+                        if (field) {
+                            var text = field.value;
+                            navigator.clipboard.writeText(text).then(function () {
+                                var icon = btn.querySelector('.bi');
+                                icon.classList.remove('bi-clipboard');
+                                icon.classList.add('bi-clipboard-check');
+                                setTimeout(() => {
+                                    icon.classList.add('bi-clipboard');
+                                    icon.classList.remove('bi-clipboard-check');
+                                    // btn.querySelector('.bi').classList.remove('bi-clipboard-check').add('bi-clipboard');
+                                }, 2000);
+                            });
+                        }
+                    });
+                });
+            }
+        }
     }
 
     // ===================
 
     insertCss();
     insertButton2Top();
+    enableBtnCopy2Clipboard();
 
 })();
