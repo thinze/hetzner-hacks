@@ -47,53 +47,64 @@
         var css = [];
 
         // cfg CSS
-        const hetzner_red = '#d50c2d';
-        const color_success = '#37b730';
+        const colors = {
+            ci_red: '#d50c2d',
+            ci_white: '#fff',
+            color_success: '#37b730',
+            color_failed: '#d50c2d',
+            color_hover: '#e9e9e9'
+        };
+
         // Texte
         css.push("#content h3 { font-size: 1rem; margin-top: 2rem; padding: 0 12px; font-weight: 600;} ");
-        css.push("#content .row label { font-weight: 500; margin-right: 2em; } ");
+        css.push("#content .row label { font-weight: 500; } ");
         // custom helper buttons
         css.push(".btn { border: 0; padding: 5px 10px; border-radius: 4px; } ");
         css.push(".btn:hover { cursor: pointer; } ");
         css.push("#btn-go2top { position: fixed; left: 10px; bottom: 50vh; font-size: 14px; background: lightgreen; padding: 5px; } ");
         // Sidebar
-        css.push("#sidemenu h3.accordion-header button:hover { background: #e9e9e9 !important; }");
-        css.push("#sidemenu h3.accordion-header .accordion-button:not(.collapsed) { background: #e9e9e9 !important; }");
+        css.push("#sidemenu h3.accordion-header button:hover { background: #color_hover# !important; }");
+        css.push("#sidemenu h3.accordion-header .accordion-button:not(.collapsed) { background: #color_hover# !important; }");
         css.push("#sidemenu dl dd { margin: 0; }");
         css.push("#sidemenu dl dd + dt { margin-top: 1em; }");
         css.push("#sidemenu dl dd a { display: inline-block; width: 100%; padding: 2px; }");
-        css.push("#sidemenu dl dd a:hover { background: #eaeaea; }");
+        css.push("#sidemenu dl dd a:hover { background: #color_hover#; }");
         // Account Suchfeld
         css.push("#domainlistsearch { padding: 5px !important; } ");
         css.push("#domainlistsearch .col.text-end button { font-size: 12px; } ");
         css.push("#domainlistsearch .col input, #domainlistsearch .col label, #domainlistsearch .col select { font-size: 14px; padding: 2px 6px; } ");
         css.push("#domainlistsearch .col #resetSearch { padding: 0; top: 2px; } ");
         // Account listing
-        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 { outline: 1px solid #fff; margin: 1px 0; } ");
-        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button { background: #hetzner_red#; color: #fff; padding: 0; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 { outline: 1px solid #ci_white#; margin: 1px 0; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button { background: #ci_red#; color: #ci_white#; padding: 0; } ");
         css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button .category-icon { align-self: baseline; } ");
-        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button i.bi { color: #fff; font-size: 24px; } ");
+        css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 .accordion-button i.bi { color: #ci_white#; font-size: 24px; } ");
         css.push("#content form[name='domain_listing'] #product-list > .accordion-item h2 + .accordion-collapse.show { padding: 8px 0 5px; } ");
-        css.push("#product-list h2.accordion-header span.count .badge { background: #fff !important; color: #000 !important; }  ");
+        css.push("#product-list h2.accordion-header span.count .badge { background: #ci_white# !important; color: #000 !important; }  ");
         css.push("#content form[name='domain_listing'] #product-list .list-group a .row { margin: 0; padding: 2px 0 0; font-size: 14px; } ");
-        css.push("#content form[name='domain_listing'] #product-list .list-group a .row:hover { background: #eee; } ");
-        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row div.searchable h4.product-name { border-left: 2px solid #fff; } ");
-        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row:hover div.searchable h4.product-name { border-color: #eee; } ");
-        css.push("#content form[name='domain_listing'] #product-list a#product-active.list-group-item div.row div.searchable h4.product-name { border-color: #hetzner_red#; } ");
+        css.push("#content form[name='domain_listing'] #product-list .list-group a .row:hover { background: #color_hover#; } ");
+        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row div.searchable h4.product-name { border-left: 2px solid #ci_white#; } ");
+        css.push("#content form[name='domain_listing'] #product-list a.list-group-item div.row:hover div.searchable h4.product-name { border-color: #color_hover#; } ");
+        css.push("#content form[name='domain_listing'] #product-list a#product-active.list-group-item div.row div.searchable h4.product-name { border-color: #ci_red#; } ");
         css.push("#content form[name='domain_listing'] #product-list .list-group a .bi.status { font-size: 10px; position: relative; top: -4px; left: 5px; } ");
         // copy2clipboard
-        css.push("#content button.clickToCopy { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
-        css.push("#content button.clickToCopy .bi:hover { color: #hetzner_red#; } ");
+        css.push("#content button.clickToCopy:not(.clickToCopyDefaultHidden) { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; } ");
+        css.push("#content button.clickToCopy .bi:hover { color: #ci_red#; } ");
         css.push("#content button.clickToCopy .bi.bi-clipboard-check { color: #color_success#; } ");
-        css.push("#content button.clickToCopy_ftppass { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
-        css.push("#content button.clickToCopy_ftppass .bi:hover { color: #hetzner_red#; } ");
-        css.push("#content button.clickToCopy_ftppass .bi.bi-clipboard-check { color: #color_success#; } ");
+        css.push("#content button#clickToCopy_ftppass.show { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
         // Content-Boxen
         css.push("#content div.contentpart { padding: 10px 15px; }");
+        css.push("#content div.contentpart p { margin: 0; }");
+        css.push("#content div.contentpart table { font-size: 14px !important; } ");
+        css.push("#content div.contentpart table td { padding: 3px; } ");
+        css.push("#content div.contentpart table tr:hover td:nth-child(2) { background-color: #color_hover#; } ");
+        // Log view
+        css.push("textarea#log { font-family: 'Courier New', Courier, monospace; font-size: 12px !important; line-height: 1.2; }");
 
         css = css.join('');
-        css = css.replaceAll('#hetzner_red#', hetzner_red);
-        css = css.replaceAll('#color_success#', color_success);
+        Object.entries(colors).forEach((color) => {
+            css = css.replaceAll('#' + color[0] + '#', color[1]);
+        });
         return css;
     }
 
@@ -135,6 +146,22 @@
 
     function enableBtnCopy2Clipboard() {
         if (location.pathname.startsWith('/logindata.php')) {
+            var eyes = document.querySelectorAll('a .bi.bi-eye');
+            if (eyes.length) {
+                eyes.forEach(eye => {
+                    let a = eye.parentNode;
+                    a.classList.add('icon-eye');
+                    a.addEventListener('click', function () {
+                        setTimeout(() => {
+                            var btn = a.closest('.row').querySelector('button#clickToCopy_ftppass');
+                            if (btn) {
+                                btn.classList.add('show');
+                            }
+                        }, 100);
+                    });
+                });
+            }
+
             var btns = document.querySelectorAll('button.clickToCopy, button.clickToCopy_ftppass');
             if (btns.length) {
                 btns.forEach(btn => {
@@ -162,10 +189,18 @@
         }
     }
 
+    function modifyLogView() {
+        // Log View
+        const log = document.querySelector('textarea#log');
+        if (log) {
+            log.setAttribute('spellcheck', 'false');
+        }
+    }
+
     // ===================
 
     insertCss();
-    insertButton2Top();
+    // insertButton2Top();
     enableBtnCopy2Clipboard();
-
+    modifyLogView();
 })();
