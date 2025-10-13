@@ -54,7 +54,8 @@
             color_failed: '#d50c2d',
             color_hover: '#e9e9e9'
         };
-
+        // allgemein
+        css.push("body { font-size: 14px; } ");
         // Texte
         css.push("#content h3 { font-size: 1rem; margin-top: 2rem; padding: 0 12px; font-weight: 600;} ");
         css.push("#content .row label { font-weight: 500; } ");
@@ -93,13 +94,14 @@
         css.push("#content button.clickToCopy .bi.bi-clipboard-check { color: #color_success#; } ");
         css.push("#content button#clickToCopy_ftppass.show { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
         // Content-Boxen
-        css.push("#content div.contentpart { padding: 10px 15px; }");
-        css.push("#content div.contentpart p { margin: 0; }");
+        css.push("#content div.contentpart { padding: 10px 15px; } ");
+        css.push("#content div.contentpart .row { margin: 0; } ");
+        css.push("#content div.contentpart p { margin: 0; } ");
         css.push("#content div.contentpart table { font-size: 14px !important; } ");
         css.push("#content div.contentpart table td { padding: 3px; } ");
         css.push("#content div.contentpart table tr:hover td:nth-child(2) { background-color: #color_hover#; } ");
         // Log view
-        css.push("textarea#log { font-family: 'Courier New', Courier, monospace; font-size: 12px !important; line-height: 1.2; }");
+        css.push("textarea#log { font-family: 'Courier New', Courier, monospace; font-size: 12px !important; line-height: 1.2; } ");
 
         css = css.join('');
         Object.entries(colors).forEach((color) => {
