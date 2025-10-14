@@ -2,6 +2,8 @@
 // @name         Hetzner konsoleH Hacks
 // @namespace    http://tampermonkey.net/
 // @version      2025-10-09
+// @updateURL    https://raw.githubusercontent.com/thinze/hetzner-hacks/refs/heads/main/src/hetzner-konsoleh.js
+// @downloadURL  https://raw.githubusercontent.com/thinze/hetzner-hacks/refs/heads/main/src/hetzner-konsoleh.js
 // @description  try to take over the world!
 // @author       You
 // @match        https://konsoleh.hetzner.com/*
