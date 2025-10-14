@@ -72,6 +72,8 @@
         css.push("#sidemenu dl dd a:hover { background: #color_hover#; }");
         // Account Suchfeld
         css.push("#domainlistsearch { padding: 5px !important; } ");
+        css.push("#domainlistsearch .col label, #domainlistsearch .col label { min-width: auto !important; } ");
+        css.push("#domainlistsearch input[name=search_domainlist] { min-width: 200px; } ");
         css.push("#domainlistsearch .col.text-end button { font-size: 12px; } ");
         css.push("#domainlistsearch .col input, #domainlistsearch .col label, #domainlistsearch .col select { font-size: 14px; padding: 2px 6px; } ");
         css.push("#domainlistsearch .col #resetSearch { padding: 0; top: 2px; } ");
@@ -95,13 +97,26 @@
         css.push("#content button#clickToCopy_ftppass.show { display: inline-block !important; background: none !important; width: auto; width: auto; position: relative; top: 6px; } ");
         // Content-Boxen
         css.push("#content div.contentpart { padding: 10px 15px; } ");
-        css.push("#content div.contentpart .row { margin: 0; } ");
+        css.push("#content div.contentpart .row {  } ");
+        css.push("#content div.contentpart .row label { min-width: 17em; } ");
         css.push("#content div.contentpart p { margin: 0; } ");
         css.push("#content div.contentpart table { font-size: 14px !important; } ");
         css.push("#content div.contentpart table td { padding: 3px; } ");
         css.push("#content div.contentpart table tr:hover td:nth-child(2) { background-color: #color_hover#; } ");
+        css.push("#content div.contentpart .nav-pills .nav-item .nav-link { padding: 2px 5px; margin-botto: 5px; font-size: 14px; } ");
+        css.push("#content div.contentpart ul.nav-pills .nav-link:not(.active) { background-color: #ddd; } ");
+        css.push("#content div.contentpart ul.nav-pills .nav-link:hover { background-color: #ci_red#; } ");
+        css.push("#content div.contentpart .btn { padding: 2px 5px; font-size: 14px; display: inline-block; margin: 2px 5px; } ");
         // Log view
         css.push("textarea#log { font-family: 'Courier New', Courier, monospace; font-size: 12px !important; line-height: 1.2; } ");
+        // Listings
+        css.push(".jstree-default .jstree-anchor, .jstree-default .jstree-animated, .jstree-default .jstree-wholerow { transition: none !important; } ");
+        css.push("#content #product-list-container .lead { font-size: 1em; } ");
+        css.push("#content #product-list-container .accordion-button::after { position: relative; right: 5px; border-color: #fff; filter: invert(1); } ");
+        // Forms
+        css.push("#content div.contentpart .form-label-control { min-width: 14em; } ");
+        css.push("#content div.contentpart .form-select { padding: 2px 5px; font-size: 14px; } ");
+        
 
         css = css.join('');
         Object.entries(colors).forEach((color) => {
