@@ -118,6 +118,7 @@
         // Forms
         css.push("#content div.contentpart .form-label-control { min-width: 14em; } ");
         css.push("#content div.contentpart .form-select { padding: 2px 5px; font-size: 14px; } ");
+        css.push("form[name='domain_form'] select.form-select { min-width: 300px; } ")
         
 
         css = css.join('');
